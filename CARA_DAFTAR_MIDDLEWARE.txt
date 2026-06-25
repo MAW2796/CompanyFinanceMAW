@@ -1,0 +1,13 @@
+// Tambahkan di bootstrap/app.php pada bagian ->withMiddleware(function (Middleware $middleware) {...})
+
+use App\Http\Middleware\EnsureUserHasRole;
+
+->withMiddleware(function (Middleware $middleware) {
+    $middleware->alias([
+        'role' => EnsureUserHasRole::class,
+    ]);
+})
+
+// Jika pakai Laravel 10 (struktur lama), daftarkan di app/Http/Kernel.php
+// pada array $middlewareAliases:
+// 'role' => \App\Http\Middleware\EnsureUserHasRole::class,
